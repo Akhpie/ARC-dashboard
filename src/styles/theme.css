@@ -1,0 +1,92 @@
+/* src/styles/theme.css */
+
+/* Base theme variables */
+:root {
+  --primary-color: #9333ea; /* purple-600 */
+  --primary-hover: #7e22ce; /* purple-700 */
+}
+
+/* Dark mode overrides for Ant Design */
+:root[class~="dark"] {
+  /* Background colors */
+  --ant-color-bg-container: rgb(31, 41, 55);
+  --ant-color-bg-elevated: rgb(31, 41, 55);
+
+  /* Text colors */
+  --ant-color-text: rgb(255, 255, 255);
+  --ant-color-text-secondary: rgb(156, 163, 175);
+
+  /* Border colors */
+  --ant-color-border: rgb(75, 85, 99);
+
+  /* Component specific */
+  .ant-card,
+  .ant-modal-content,
+  .ant-select-dropdown {
+    background-color: rgb(31, 41, 55) !important;
+  }
+
+  .ant-input,
+  .ant-select-selector,
+  .ant-input-number,
+  .ant-picker {
+    background-color: rgb(55, 65, 81) !important;
+    border-color: rgb(75, 85, 99) !important;
+    color: white !important;
+  }
+
+  .ant-btn {
+    &.ant-btn-default {
+      background-color: rgb(55, 65, 81);
+      border-color: rgb(75, 85, 99);
+      color: white;
+    }
+  }
+
+  .ant-typography {
+    color: rgb(255, 255, 255);
+  }
+
+  .ant-modal-title,
+  .ant-select-selection-item,
+  .ant-select-selection-placeholder,
+  .ant-form-item-label > label {
+    color: rgb(255, 255, 255) !important;
+  }
+
+  .ant-steps-item-title,
+  .ant-steps-item-description {
+    color: rgb(255, 255, 255) !important;
+  }
+
+  .ant-table {
+    background-color: transparent;
+
+    .ant-table-thead > tr > th {
+      background-color: rgb(31, 41, 55);
+      color: white;
+    }
+
+    .ant-table-tbody > tr > td {
+      background-color: rgb(31, 41, 55);
+      color: white;
+    }
+  }
+
+  .ant-select-dropdown {
+    background-color: rgb(31, 41, 55) !important;
+    border-color: rgb(75, 85, 99) !important;
+  }
+
+  .ant-select-item {
+    color: white !important;
+  }
+
+  .ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+    background-color: rgb(55, 65, 81) !important;
+  }
+
+  .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+    background-color: rgb(75, 85, 99) !important;
+  }
+}

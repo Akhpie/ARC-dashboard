@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply antialiased text-gray-600 bg-gray-50;
+}
+
+/* Custom scrollbar for modern browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-purple-300 rounded-full hover:bg-purple-500;
+}
+
+/* Ant Design Theme Overrides */
+:root {
+  --ant-primary-color: #9333ea;
+  --ant-primary-color-hover: #a855f7;
+}
+
+/* Light Theme */
+.ant-btn-primary {
+  background-color: var(--ant-primary-color) !important;
+}
+
+.ant-btn-primary:hover {
+  background-color: var(--ant-primary-color-hover) !important;
+}
+
+.ant-menu-light .ant-menu-item-selected {
+  background-color: #f3e8ff !important;
+  color: #9333ea !important;
+}
+
+.ant-menu-light .ant-menu-item:hover {
+  color: #9333ea !important;
+}
+
+.ant-menu-light .ant-menu-submenu-selected > .ant-menu-submenu-title {
+  color: #9333ea !important;
+}
+
+.ant-menu-light .ant-menu-item-selected .lucide {
+  color: #9333ea !important;
+}
+
+.ant-layout-sider-light {
+  background-color: white !important;
+}
+
+/* Dark Theme */
+.dark .ant-layout {
+  background-color: #1f2937 !important;
+}
+
+.dark .ant-layout-sider {
+  background-color: #111827 !important;
+  /* background-image: linear-gradient(60deg, #2c0035, #9733ee) !important; */
+}
+
+.dark .ant-menu-dark {
+  background-color: transparent !important;
+}
+
+.dark .ant-menu-dark .ant-menu-item-selected {
+  background-color: #374151 !important;
+  color: #e9d5ff !important;
+}
+
+/* //! NEED TO WORK ON THIS LATER */
+:where(.css-dev-only-do-not-override-l2p32g).ant-menu-dark.ant-menu-inline
+  .ant-menu-sub.ant-menu-inline,
+:where(.css-dev-only-do-not-override-l2p32g).ant-menu-dark
+  > .ant-menu.ant-menu-inline
+  .ant-menu-sub.ant-menu-inline {
+  background: #000c17;
+}
+
+.dark .ant-menu-dark .ant-menu-item:hover {
+  background-color: #374151 !important;
+}
+
+.dark .ant-menu-dark .ant-menu-submenu-selected > .ant-menu-submenu-title {
+  color: #e9d5ff !important;
+}
+.dark .ant-menu-submenu-item-selected {
+  background-color: #9333ea;
+}
+
+.dark .ant-layout-header {
+  background-color: #111827 !important;
+}
+
+.dark .ant-layout-content {
+  background-color: #1f2937 !important;
+  color: #e5e7eb !important;
+}
+
+.dark .ant-menu-dark .ant-menu-item .lucide,
+.dark .ant-menu-dark .ant-menu-submenu .lucide {
+  color: #e5e7eb !important;
+}
+
+.dark .ant-menu-dark .ant-menu-item-selected .lucide {
+  color: #e9d5ff !important;
+}
