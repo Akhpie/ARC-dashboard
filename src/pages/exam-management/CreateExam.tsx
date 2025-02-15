@@ -323,13 +323,13 @@ const CreateExam = () => {
         }}
       >
         <Title level={2}>Prepare Exam</Title>
-        <Button
+        {/* <Button
           type="primary"
           icon={<ReloadOutlined />}
           onClick={() => setIsExamListVisible(true)}
         >
           View Uploaded Exams
-        </Button>
+        </Button> */}
       </div>
 
       <Steps current={currentStep} items={steps} />
