@@ -157,7 +157,7 @@ const styles = `
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    margin-top: 60px;
+    margin-top: 30px;
     padding: 0 48px;
   }
 
@@ -330,7 +330,7 @@ const HomePage = () => {
                   textShadow: "0 1px 3px rgba(0, 0, 0, 0.3)",
                 }}
               >
-                EduHub
+                ARC
               </Title>
               <div className="desktop-nav">
                 <NavLinks />
@@ -385,15 +385,10 @@ const HomePage = () => {
               margin: "0 auto",
             }}
           >
-            <Title
-              className="gradient-text"
-              style={{
-                fontSize: 64,
-                marginBottom: 32,
-              }}
-            >
+            <Title className="gradient-text text-3xl md:text-5xl lg:text-6xl mb-4 md:mb-8">
               Transform Your Learning Journey
             </Title>
+
             <Paragraph
               style={{
                 fontSize: 20,
