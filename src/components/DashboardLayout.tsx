@@ -37,7 +37,7 @@ export default function DashboardLayout() {
   const location = useLocation();
 
   const handleSignOut = () => {
-    localStorage.removeItem("token"); // Add proper auth logout logic
+    localStorage.removeItem("token");
     navigate("/signin");
   };
 

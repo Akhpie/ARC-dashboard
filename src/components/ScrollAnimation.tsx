@@ -44,7 +44,7 @@ const Section: React.FC<SectionProps> = ({
   );
 
   // Border progress animations
-  const rightProgress = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
+  const rightProgress = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
   const bottomProgress = useTransform(scrollYProgress, [0.25, 0.5], [0, 1]);
   const leftProgress = useTransform(scrollYProgress, [0.5, 0.75], [0, 1]);
   const topProgress = useTransform(scrollYProgress, [0.75, 1], [0, 1]);
@@ -156,29 +156,24 @@ const ScrollAnimationDemo: React.FC = () => {
 
   const sections: Section[] = [
     {
-      title: "Open source does not mean open access",
+      title: "AI-Powered Academic Assessment",
       content:
-        "Our initiative is driven by the belief that AI should be an openly shared asset. However, simply open sourcing AI models is insufficient. The predominance of large data centers controlling GPU resources presents a significant obstacle.",
+        "Identifies students' weak areas, generates personalized assignments, auto-grades responses, and delivers performance reports. It also automates question paper creation and answer sheet evaluation.",
     },
     {
-      title: "Democratizing AI Resources",
+      title: "Interactive AI Tutors & Digital Twins",
       content:
-        "We believe in breaking down the barriers that restrict access to AI computing power. By distributing computational resources more equitably, we can ensure that innovation isn't limited to those with access to massive data centers.",
+        "Engages students with intelligent chatbots that provide hints and guidance. Additionally, digital twin educators offer subject-specific support for an interactive learning experience.",
     },
     {
-      title: "Community-Driven Development",
+      title: "One stop Productivity tools for students",
       content:
-        "The future of AI development should be shaped by a diverse community of contributors, not just large organizations. This requires both open-source code and accessible computing infrastructure.",
+        "Focus mode , digital dairy planner,2 min summaraied news regarding tech, sports, business. Removes the any news with political bias, networking with fellow students with similar hobbies and collaborating together to create something.",
     },
     {
-      title: "Sustainable AI Infrastructure",
+      title: "Access to higher education material",
       content:
-        "As we work to make AI more accessible, we must also consider the environmental impact. Our approach focuses on efficient resource utilization and sustainable computing practices.",
-    },
-    {
-      title: "Education and Empowerment",
-      content:
-        "Beyond providing access to resources, we're committed to educating and empowering developers. This includes comprehensive documentation, tutorials, and community support.",
+        "Jee mains and neet study material. Research problem statements simplified and abstraction from complex overwhelming math with visual animations",
     },
   ];
 

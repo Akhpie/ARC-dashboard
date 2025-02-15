@@ -312,7 +312,7 @@ const HomePage = () => {
               >
                 ARC
               </Title>
-              <div className="desktop-nav">{/* <NavLinks /> */}</div>
+              <div className="desktop-nav"></div>
             </div>
 
             <div className="desktop-nav">
@@ -344,7 +344,8 @@ const HomePage = () => {
             },
             body: {
               padding: "24px",
-              background: "rgba(76, 29, 149, 0.95)",
+              background:
+                "linear-gradient(135deg, #0f172a 0%, #1e40af 50%, #60a5fa 100%)",
             },
           }}
         >
@@ -380,13 +381,6 @@ const HomePage = () => {
             >
               Empower your educational experience with cutting-edge tools
             </Paragraph>
-            {/* <Button
-              type="primary"
-              className="start-button"
-              icon={<ChevronRight />}
-            >
-              ARC NOW
-            </Button> */}
             <AnimatedText />
           </div>
 
