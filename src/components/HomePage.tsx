@@ -1,11 +1,8 @@
-import React from "react";
-import { Layout, Button, Card, Space, Typography, Statistic } from "antd";
-import {
-  TrophyOutlined,
-  BellOutlined,
-  ThunderboltOutlined,
-  RightCircleOutlined,
-} from "@ant-design/icons";
+import React, { useState } from "react";
+import { Layout, Button, Card, Typography, Statistic, Drawer } from "antd";
+import { ChevronRight, Trophy, Bell, Zap, Menu } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+// import "../styles/HomePage.css";
 
 const { Header, Content } = Layout;
 const { Title, Paragraph } = Typography;
@@ -18,7 +15,7 @@ const styles = `
     width: 100%;
     height: 100%;
     background-size: 50px 50px;
-    background-image: 
+    background-image:
       linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
     z-index: 0;
@@ -27,6 +24,11 @@ const styles = `
   .content-container {
     position: relative;
     z-index: 1;
+  }
+
+    .ant-drawer-header {
+    background: #0c075775 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
   }
 
   .glassmorphic {
@@ -62,6 +64,20 @@ const styles = `
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
   }
 
+    .mobile-nav-link {
+    color: white !important;
+    font-size: 18px !important;
+    padding: 12px 16px !important;
+    width: 100% !important;
+    text-align: left !important;
+    border-radius: 8px !important;
+    margin-bottom: 8px !important;
+  }
+
+    .mobile-nav-link:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+  }
+
   .nav-link:hover {
     background: rgba(255, 255, 255, 0.1) !important;
   }
@@ -86,6 +102,22 @@ const styles = `
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     animation: gradient 8s ease infinite;
     font-weight: 800 !important;
+  }
+
+  .mobile-login-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+    .mobile-login-button {
+    width: 100% !important;
+    text-align: center !important;
+    padding: 12px !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: white !important;
+    border-radius: 8px !important;
   }
 
   .start-button {
@@ -136,9 +168,126 @@ const styles = `
   .feature-description {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
   }
+
+  .mobile-menu {
+    display: none;
+    color: white !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+  }
+      .mobile-menu svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+  }
+
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .login-buttons {
+    display: flex;
+    gap: 12px;
+  }
+
+  @media (max-width: 1024px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0 24px;
+    }
+
+    .stats-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .desktop-nav {
+      display: none;
+    }
+
+    .mobile-menu {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stats-container {
+      grid-template-columns: 1fr;
+    }
+
+    .pill-nav {
+      padding: 8px 16px !important;
+    }
+  }
 `;
 
 const HomePage = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleTeacherClick = () => {
+    navigate("/admin");
+  };
+
+  const NavLinks = ({ mobile = false }: { mobile?: boolean }) => (
+    <>
+      <Button type="link" className={mobile ? "mobile-nav-link" : "nav-link"}>
+        Features
+      </Button>
+      <Button type="link" className={mobile ? "mobile-nav-link" : "nav-link"}>
+        News
+      </Button>
+      <Button type="link" className={mobile ? "mobile-nav-link" : "nav-link"}>
+        Resources
+      </Button>
+    </>
+  );
+
+  const LoginButtons = ({ mobile = false }: { mobile?: boolean }) => (
+    <div className={mobile ? "mobile-login-buttons" : "login-buttons"}>
+      <Button
+        type="primary"
+        className={mobile ? "mobile-login-button" : "glassmorphic"}
+        style={
+          !mobile
+            ? {
+                padding: "8px 16px",
+                height: "auto",
+                color: "white",
+                textShadow: "0 1px 3px rgba(0, 0, 0, 0.3)",
+              }
+            : {}
+        }
+        onClick={handleTeacherClick}
+      >
+        Teacher Login
+      </Button>
+      <Button
+        type="primary"
+        className={mobile ? "mobile-login-button" : "glassmorphic"}
+        style={
+          !mobile
+            ? {
+                padding: "8px 16px",
+                height: "auto",
+                color: "white",
+                textShadow: "0 1px 3px rgba(0, 0, 0, 0.3)",
+              }
+            : {}
+        }
+      >
+        Student Login
+      </Button>
+    </div>
+  );
+
   return (
     <Layout
       style={{
@@ -183,32 +332,49 @@ const HomePage = () => {
               >
                 EduHub
               </Title>
-              <Button type="link" className="nav-link">
-                Features
-              </Button>
-              <Button type="link" className="nav-link">
-                News
-              </Button>
-              <Button type="link" className="nav-link">
-                Resources
-              </Button>
+              <div className="desktop-nav">
+                <NavLinks />
+              </div>
             </div>
+
+            <div className="desktop-nav">
+              <LoginButtons />
+            </div>
+
             <Button
-              type="primary"
-              shape="round"
-              className="glassmorphic"
+              className="mobile-menu glassmorphic"
               style={{
-                padding: "12px 32px",
-                fontSize: "16px",
+                padding: "8px",
                 height: "auto",
                 color: "white",
-                textShadow: "0 1px 3px rgba(0, 0, 0, 0.3)",
               }}
+              onClick={() => setMobileMenuOpen(true)}
             >
-              Get Started
+              <Menu />
             </Button>
           </div>
         </Header>
+
+        <Drawer
+          title="Menu"
+          placement="right"
+          onClose={() => setMobileMenuOpen(false)}
+          open={mobileMenuOpen}
+          styles={{
+            header: {
+              borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
+            },
+            body: {
+              padding: "24px",
+              background: "rgba(76, 29, 149, 0.95)",
+            },
+          }}
+        >
+          <div className="flex flex-col gap-4">
+            <NavLinks mobile={true} />
+            <LoginButtons mobile={true} />
+          </div>
+        </Drawer>
 
         <Content>
           <div
@@ -244,7 +410,7 @@ const HomePage = () => {
             <Button
               type="primary"
               className="start-button"
-              icon={<RightCircleOutlined />}
+              icon={<ChevronRight />}
             >
               Start Learning
             </Button>
@@ -253,25 +419,17 @@ const HomePage = () => {
           <div className="features-grid">
             {[
               {
-                icon: (
-                  <TrophyOutlined style={{ fontSize: 48, color: "#b794f4" }} />
-                ),
+                icon: <Trophy size={48} color="#b794f4" />,
                 title: "Reward System",
                 description: "Earn points and unlock achievements as you learn",
               },
               {
-                icon: (
-                  <BellOutlined style={{ fontSize: 48, color: "#4ade80" }} />
-                ),
+                icon: <Bell size={48} color="#4ade80" />,
                 title: "Latest News",
                 description: "Stay updated with educational trends",
               },
               {
-                icon: (
-                  <ThunderboltOutlined
-                    style={{ fontSize: 48, color: "#b794f4" }}
-                  />
-                ),
+                icon: <Zap size={48} color="#b794f4" />,
                 title: "Focus Mode",
                 description: "Enhance your concentration",
               },
@@ -325,7 +483,12 @@ const HomePage = () => {
                   suffix: "+",
                   color: "#4ade80",
                 },
-                { title: "Courses", value: 500, suffix: "+", color: "#b794f4" },
+                {
+                  title: "Courses",
+                  value: 500,
+                  suffix: "+",
+                  color: "#b794f4",
+                },
                 {
                   title: "Success Rate",
                   value: 95,
