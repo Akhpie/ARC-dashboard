@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Layout, Button, Card, Typography, Statistic, Drawer } from "antd";
 import { ChevronRight, Trophy, Bell, Zap, Menu } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import ScrollAnimationDemo from "./ScrollAnimation";
+import AnimatedText from "./AnimatedText";
 // import "../styles/HomePage.css";
 
 const { Header, Content } = Layout;
@@ -16,8 +18,8 @@ const styles = `
     height: 100%;
     background-size: 50px 50px;
     background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 0.5px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 0.5px);
     z-index: 0;
   }
 
@@ -52,7 +54,7 @@ const styles = `
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     display: flex;
     align-items: center;
-    gap: 32px;
+
   }
 
   .nav-link {
@@ -153,14 +155,6 @@ const styles = `
     padding: 24px;
   }
 
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 30px;
-    padding: 0 48px;
-  }
-
   .feature-title {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
   }
@@ -236,20 +230,6 @@ const HomePage = () => {
     navigate("/admin");
   };
 
-  const NavLinks = ({ mobile = false }: { mobile?: boolean }) => (
-    <>
-      <Button type="link" className={mobile ? "mobile-nav-link" : "nav-link"}>
-        Features
-      </Button>
-      <Button type="link" className={mobile ? "mobile-nav-link" : "nav-link"}>
-        News
-      </Button>
-      <Button type="link" className={mobile ? "mobile-nav-link" : "nav-link"}>
-        Resources
-      </Button>
-    </>
-  );
-
   const LoginButtons = ({ mobile = false }: { mobile?: boolean }) => (
     <div className={mobile ? "mobile-login-buttons" : "login-buttons"}>
       <Button
@@ -293,7 +273,7 @@ const HomePage = () => {
       style={{
         minHeight: "100vh",
         background:
-          "linear-gradient(135deg, #4c1d95 0%, #6d28d9 50%, #059669 100%)",
+          "linear-gradient(135deg, #0f172a 0%, #1e40af 50%, #60a5fa 100%)",
         position: "relative",
         overflow: "hidden",
       }}
@@ -332,9 +312,7 @@ const HomePage = () => {
               >
                 ARC
               </Title>
-              <div className="desktop-nav">
-                <NavLinks />
-              </div>
+              <div className="desktop-nav">{/* <NavLinks /> */}</div>
             </div>
 
             <div className="desktop-nav">
@@ -371,7 +349,7 @@ const HomePage = () => {
           }}
         >
           <div className="flex flex-col gap-4">
-            <NavLinks mobile={true} />
+            {/* <NavLinks mobile={true} /> */}
             <LoginButtons mobile={true} />
           </div>
         </Drawer>
@@ -379,13 +357,13 @@ const HomePage = () => {
         <Content>
           <div
             style={{
-              padding: "180px 48px 100px",
+              padding: "180px 48px 40px",
               textAlign: "center",
               maxWidth: 1200,
               margin: "0 auto",
             }}
           >
-            <Title className="gradient-text text-3xl md:text-5xl lg:text-6xl mb-4 md:mb-8">
+            <Title className="gradient-text text-3xl md:text-5xl lg:text-6xl mb-4 md:mb-8 .font-Josefin">
               Transform Your Learning Journey
             </Title>
 
@@ -395,128 +373,24 @@ const HomePage = () => {
                 color: "rgba(255, 255, 255, 0.95)",
                 marginBottom: 48,
                 maxWidth: 800,
-                margin: "0 auto 48px",
+                margin: "0 auto 0px",
                 textShadow: "0 1px 3px rgba(0, 0, 0, 0.3)",
               }}
+              className="font-inter"
             >
-              Empower your educational experience with cutting-edge tools and
-              rewards
+              Empower your educational experience with cutting-edge tools
             </Paragraph>
-            <Button
+            {/* <Button
               type="primary"
               className="start-button"
               icon={<ChevronRight />}
             >
-              Start Learning
-            </Button>
+              ARC NOW
+            </Button> */}
+            <AnimatedText />
           </div>
 
-          <div className="features-grid">
-            {[
-              {
-                icon: <Trophy size={48} color="#b794f4" />,
-                title: "Reward System",
-                description: "Earn points and unlock achievements as you learn",
-              },
-              {
-                icon: <Bell size={48} color="#4ade80" />,
-                title: "Latest News",
-                description: "Stay updated with educational trends",
-              },
-              {
-                icon: <Zap size={48} color="#b794f4" />,
-                title: "Focus Mode",
-                description: "Enhance your concentration",
-              },
-            ].map((feature, index) => (
-              <Card
-                key={index}
-                className="feature-card"
-                bordered={false}
-                style={{ background: "transparent" }}
-              >
-                <div style={{ textAlign: "center", marginBottom: 24 }}>
-                  {feature.icon}
-                </div>
-                <Title
-                  level={3}
-                  className="feature-title"
-                  style={{
-                    color: "white",
-                    textAlign: "center",
-                    marginBottom: 16,
-                  }}
-                >
-                  {feature.title}
-                </Title>
-                <Paragraph
-                  className="feature-description"
-                  style={{
-                    color: "rgba(255, 255, 255, 0.95)",
-                    textAlign: "center",
-                  }}
-                >
-                  {feature.description}
-                </Paragraph>
-              </Card>
-            ))}
-          </div>
-
-          <div
-            className="glassmorphic"
-            style={{
-              margin: "100px 48px",
-              borderRadius: 20,
-              padding: "48px",
-            }}
-          >
-            <div className="stats-container">
-              {[
-                {
-                  title: "Active Students",
-                  value: 10000,
-                  suffix: "+",
-                  color: "#4ade80",
-                },
-                {
-                  title: "Courses",
-                  value: 500,
-                  suffix: "+",
-                  color: "#b794f4",
-                },
-                {
-                  title: "Success Rate",
-                  value: 95,
-                  suffix: "%",
-                  color: "#4ade80",
-                },
-              ].map((stat, index) => (
-                <div key={index} className="stat-item">
-                  <Statistic
-                    title={
-                      <span
-                        style={{
-                          color: "white",
-                          fontSize: "18px",
-                          textShadow: "0 1px 3px rgba(0, 0, 0, 0.3)",
-                        }}
-                      >
-                        {stat.title}
-                      </span>
-                    }
-                    value={stat.value}
-                    suffix={stat.suffix}
-                    valueStyle={{
-                      color: stat.color,
-                      fontSize: "36px",
-                      fontWeight: "bold",
-                      textShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
+          <ScrollAnimationDemo />
         </Content>
       </div>
     </Layout>
