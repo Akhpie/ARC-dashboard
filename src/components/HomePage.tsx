@@ -149,9 +149,9 @@ const HomePage = () => {
               margin: "0 auto",
             }}
           >
-            <Title className="gradient-text text-3xl md:text-5xl lg:text-6xl mb-4 md:mb-8 .font-Josefin">
+            <h1 className="gradient-text text-4xl md:text-6xl lg:text-6xl xl:text-6xl mb-4 md:mb-8 font-Josefin leading-normal pt-2">
               Transform Your Learning Journey
-            </Title>
+            </h1>
 
             <Paragraph
               style={{
