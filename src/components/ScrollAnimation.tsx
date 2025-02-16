@@ -139,7 +139,7 @@ const Section: React.FC<SectionProps> = ({
         </motion.div>
 
         <motion.h2
-          className="text-2xl font-semibold text-white mb-4 font-inter"
+          className="text-2xl font-semibold text-white mb-4 font-inter drop-shadow-lg"
           style={{ y: useTransform(scrollYProgress, [0, 0.5], [20, 0]) }}
         >
           {title}
@@ -152,7 +152,7 @@ const Section: React.FC<SectionProps> = ({
           {content.map((point, i) => (
             <div key={i} className="flex items-start gap-3">
               <CheckCircle className="w-5 h-5 mt-1 text-emerald-400 flex-shrink-0" />
-              <p className="text-white/90 font-normal text-lg font-inter">
+              <p className="text-white/90 font-normal text-lg font-inter drop-shadow-md">
                 {point}
               </p>
             </div>
