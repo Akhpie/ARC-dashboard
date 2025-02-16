@@ -43,14 +43,6 @@ const Section: React.FC<SectionProps> = ({
     ["rgb(147, 51, 234)", "rgb(59, 130, 246)"]
   );
 
-  // Circle indicator animations
-  const circleScale = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
-  const circleFill = useTransform(
-    scrollYProgress,
-    [0, 0.2, 0.4, 0.6, 0.8, 1],
-    [0, 0.2, 0.4, 0.6, 0.8, 1]
-  );
-
   // Border progress animations
   const rightProgress = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
   const bottomProgress = useTransform(scrollYProgress, [0.25, 0.5], [0, 1]);
