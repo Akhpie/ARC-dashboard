@@ -154,9 +154,10 @@ export default function DashboardLayout() {
       >
         <div className="h-16 flex items-center px-4 border-b dark:border-gray-700">
           <h1
-            className={`text-xl font-semibold text-purple-600 transition-all duration-200 ${
+            className={`text-xl cursor-pointer font-semibold text-purple-600 transition-all duration-200 ${
               collapsed ? "opacity-1 w-0" : "opacity-100 w-auto"
             }`}
+            onClick={() => navigate("/")}
           >
             ARC
           </h1>

@@ -2,7 +2,7 @@ import React from "react";
 
 const AnimatedText = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[150px] font-sans px-4">
+    <div className="flex flex-col items-center justify-center min-h-[150px] font-sans px-4 mt-2">
       <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight mb-6 group relative">
         {/* Aspire */}
         <div className="inline-flex flex-col sm:flex-row items-center">

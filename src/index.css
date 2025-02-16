@@ -37,7 +37,7 @@ body {
 
 /* Light Theme */
 .ant-btn-primary {
-  background-color: var(--ant-primary-color) !important;
+  background-color: var(--ant-primary-color);
 }
 
 .ant-btn-primary:hover {

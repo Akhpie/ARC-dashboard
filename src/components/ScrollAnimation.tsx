@@ -1,12 +1,14 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Check, CheckCircle } from "lucide-react";
 
 interface Section {
   title: string;
-  content: string;
+  content: string[]; // Changed to array for points
 }
 
-interface SectionProps extends Section {
+interface SectionProps extends Omit<Section, "content"> {
+  content: string[];
   index: number;
   totalSections: number;
 }
@@ -30,17 +32,23 @@ const Section: React.FC<SectionProps> = ({
     [0, 0.2, 0.8, 1],
     [0.8, 1, 1, 0.8]
   );
-
   const lineHeight = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
     ["0%", "100%", "100%"]
   );
-
   const currentColor = useTransform(
     scrollYProgress,
     [1, 1],
     ["rgb(147, 51, 234)", "rgb(59, 130, 246)"]
+  );
+
+  // Circle indicator animations
+  const circleScale = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  const circleFill = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.4, 0.6, 0.8, 1],
+    [0, 0.2, 0.4, 0.6, 0.8, 1]
   );
 
   // Border progress animations
@@ -72,11 +80,10 @@ const Section: React.FC<SectionProps> = ({
           opacity,
           scale,
         }}
-        className="relative z-10 mb-20 p-8 rounded-lg bg-gradient-to-br from-white/10 to-white/70 backdrop-blur-lg border border-white/20 hover:bg-white/30 transition-all ease-in-out duration-300 shadow-lg overflow-hidden"
+        className="relative z-10 mb-20 p-8 rounded-lg bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg border border-white/20 hover:bg-white/10 transition-all ease-in-out duration-300 shadow-lg overflow-hidden"
       >
         {/* Animated Border Lines */}
         <div className="absolute inset-0">
-          {/* Right Border */}
           <motion.div
             className="absolute top-0 right-0 w-1 bg-purple-600"
             style={{
@@ -86,7 +93,6 @@ const Section: React.FC<SectionProps> = ({
               backgroundColor: currentColor,
             }}
           />
-          {/* Bottom Border */}
           <motion.div
             className="absolute bottom-0 right-0 h-1 bg-purple-600"
             style={{
@@ -96,7 +102,6 @@ const Section: React.FC<SectionProps> = ({
               backgroundColor: currentColor,
             }}
           />
-          {/* Left Border */}
           <motion.div
             className="absolute bottom-0 left-0 w-1 bg-purple-600"
             style={{
@@ -106,7 +111,6 @@ const Section: React.FC<SectionProps> = ({
               backgroundColor: currentColor,
             }}
           />
-          {/* Top Border */}
           <motion.div
             className="absolute top-0 left-0 h-1 bg-purple-600"
             style={{
@@ -135,17 +139,25 @@ const Section: React.FC<SectionProps> = ({
         </motion.div>
 
         <motion.h2
-          className="text-2xl font-bold mb-4"
+          className="text-2xl font-semibold text-white mb-4 font-inter"
           style={{ y: useTransform(scrollYProgress, [0, 0.5], [20, 0]) }}
         >
           {title}
         </motion.h2>
-        <motion.p
-          className="text-gray-600"
+
+        <motion.div
+          className="space-y-3"
           style={{ y: useTransform(scrollYProgress, [0, 0.5], [30, 0]) }}
         >
-          {content}
-        </motion.p>
+          {content.map((point, i) => (
+            <div key={i} className="flex items-start gap-3">
+              <CheckCircle className="w-5 h-5 mt-1 text-emerald-400 flex-shrink-0" />
+              <p className="text-white/90 font-normal text-lg font-inter">
+                {point}
+              </p>
+            </div>
+          ))}
+        </motion.div>
       </motion.div>
     </div>
   );
@@ -157,23 +169,35 @@ const ScrollAnimationDemo: React.FC = () => {
   const sections: Section[] = [
     {
       title: "AI-Powered Academic Assessment",
-      content:
-        "Identifies students' weak areas, generates personalized assignments, auto-grades responses, and delivers performance reports. It also automates question paper creation and answer sheet evaluation.",
+      content: [
+        "Identifies students' weak areas and generates personalized assignments",
+        "Auto-grades responses and delivers detailed performance reports",
+        "Automates question paper creation and evaluation process",
+      ],
     },
     {
       title: "Interactive AI Tutors & Digital Twins",
-      content:
-        "Engages students with intelligent chatbots that provide hints and guidance. Additionally, digital twin educators offer subject-specific support for an interactive learning experience.",
+      content: [
+        "Intelligent chatbots providing real-time hints and guidance",
+        "Digital twin educators offering subject-specific support",
+        "24/7 personalized feedback and learning recommendations",
+      ],
     },
     {
       title: "One stop Productivity tools for students",
-      content:
-        "Focus mode , digital dairy planner,2 min summaraied news regarding tech, sports, business. Removes the any news with political bias, networking with fellow students with similar hobbies and collaborating together to create something.",
+      content: [
+        "Focus mode and digital diary planner for efficient studying",
+        "2-minute summarized news updates on tech, sports, and business",
+        "Networking platform for collaboration with like-minded students",
+      ],
     },
     {
       title: "Access to higher education material",
-      content:
-        "Jee mains and neet study material. Research problem statements simplified and abstraction from complex overwhelming math with visual animations",
+      content: [
+        "Comprehensive JEE Mains and NEET study materials",
+        "Research problems simplified with visual animations",
+        "Interactive practice tests and step-by-step problem guides",
+      ],
     },
   ];
 
@@ -182,8 +206,8 @@ const ScrollAnimationDemo: React.FC = () => {
       ref={containerRef}
       className="min-h-screen w-full max-w-4xl mx-auto p-8 bg-gradient-to-b"
     >
-      <div className="relative top-0 bg-white/10 backdrop-blur-lg p-6 mb-8 rounded-xl shadow-lg border border-white/20">
-        <h1 className="text-4xl font-extrabold bg-gradient-to-r from-blue-400 to-blue-200 text-transparent bg-clip-text drop-shadow-lg font-inter">
+      <div className="relative top-0 bg-white/5 backdrop-blur-lg p-6 mb-8 rounded-xl shadow-lg border border-white/20">
+        <h1 className="text-4xl font-extrabold text-white drop-shadow-lg font-inter">
           Integration of AI in education
         </h1>
       </div>
