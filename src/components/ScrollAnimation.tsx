@@ -80,7 +80,7 @@ const Section: React.FC<SectionProps> = ({
           opacity,
           scale,
         }}
-        className="relative z-10 mb-20 p-8 rounded-lg bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg border border-white/20 hover:bg-white/10 transition-all ease-in-out duration-300 shadow-lg overflow-hidden"
+        className="relative z-10 mb-20 p-8 rounded-lg bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg border border-white/20 hover:bg-white/5 transition-all ease-in-out duration-300 shadow-lg overflow-hidden"
       >
         {/* Animated Border Lines */}
         <div className="absolute inset-0">
