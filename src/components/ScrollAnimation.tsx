@@ -172,15 +172,14 @@ const ScrollAnimationDemo: React.FC = () => {
       content: [
         "Identifies students' weak areas and generates personalized assignments",
         "Auto-grades responses and delivers detailed performance reports",
-        "Automates question paper creation and evaluation process",
+        "Automates question paper creation and assists in evaluation process for teachers",
       ],
     },
     {
       title: "Interactive AI Tutors & Digital Twins",
       content: [
-        "Intelligent chatbots providing real-time hints and guidance",
-        "Digital twin educators offering subject-specific support",
-        "24/7 personalized feedback and learning recommendations",
+        "Guided AI Chatbots which encourages students to think independently by providing progressive hints without revealing direct answers.",
+        "Digital Twin Educators with Voice Cloning - Replicates the student’s teacher’s voice for personalized, subject-specific guidance.",
       ],
     },
     {
@@ -188,13 +187,13 @@ const ScrollAnimationDemo: React.FC = () => {
       content: [
         "Focus mode and digital diary planner for efficient studying",
         "2-minute summarized news updates on tech, sports, and business",
-        "Networking platform for collaboration with like-minded students",
+        "Networking platform for collaboration with students who share similar hobbies",
       ],
     },
     {
       title: "Access to higher education material",
       content: [
-        "Comprehensive JEE Mains and NEET study materials",
+        "Comprehensive JEE Mains, NEET, GATE and CAT study materials",
         "Research problems simplified with visual animations",
         "Interactive practice tests and step-by-step problem guides",
       ],
