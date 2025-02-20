@@ -16,6 +16,9 @@ const HomePage = () => {
   const handleTeacherClick = () => {
     navigate("/admin");
   };
+  const handleStudentClick = () => {
+    navigate("/student-login");
+  };
 
   const LoginButtons = ({ mobile = false }: { mobile?: boolean }) => (
     <div className={mobile ? "mobile-login-buttons" : "login-buttons"}>
@@ -37,6 +40,7 @@ const HomePage = () => {
         Teacher Login
       </Button>
       <Button
+        onClick={handleStudentClick}
         type="primary"
         className={mobile ? "mobile-login-button" : "glassmorphic"}
         style={
